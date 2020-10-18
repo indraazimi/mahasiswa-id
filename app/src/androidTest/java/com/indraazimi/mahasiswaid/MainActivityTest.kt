@@ -17,7 +17,10 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.runners.AndroidJUnit4
 import androidx.test.filters.LargeTest
+import androidx.test.platform.app.InstrumentationRegistry
 import com.indraazimi.mahasiswaid.data.Mahasiswa
+import com.indraazimi.mahasiswaid.data.MahasiswaDb
+import org.junit.Before
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -27,6 +30,13 @@ class MainActivityTest {
 
     companion object {
         private val MAHASISWA_DUMMY = Mahasiswa(0, "6706180001", "Tika Aulia Utami")
+    }
+
+    @Before
+    fun setUp() {
+        // Lakukan penghapusan database setiap kali test akan dijalankan.
+        InstrumentationRegistry.getInstrumentation().targetContext
+            .deleteDatabase(MahasiswaDb.DATABASE_NAME)
     }
 
     @Test
@@ -46,9 +56,5 @@ class MainActivityTest {
 
         // Tes selesai, tutup activity nya
         activityScenario.close()
-
-        // CATATAN: Ketika testInsert dijalankan > 1x, hasil test akan gagal.
-        // Ini terjadi karena di database masih ada data MAHASISWA_DUMMY
-        // hasil run sebelumnya. Masalah ini akan kita tangani nanti.
     }
 }

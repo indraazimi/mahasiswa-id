@@ -10,6 +10,7 @@
 package com.indraazimi.mahasiswaid.data
 
 import android.content.Context
+import androidx.annotation.VisibleForTesting
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
@@ -20,6 +21,9 @@ abstract class MahasiswaDb : RoomDatabase()  {
     abstract val dao : MahasiswaDao
 
     companion object {
+        @VisibleForTesting
+        const val DATABASE_NAME = "mahasiswa.db"
+
         @Volatile
         private var INSTANCE: MahasiswaDb? = null
 
@@ -30,7 +34,7 @@ abstract class MahasiswaDb : RoomDatabase()  {
                     instance = Room.databaseBuilder(
                         context.applicationContext,
                         MahasiswaDb::class.java,
-                        "mahasiswa.db"
+                        DATABASE_NAME
                     ).build()
                     INSTANCE = instance
                 }
