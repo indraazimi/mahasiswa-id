@@ -13,7 +13,7 @@ import com.google.firebase.database.Exclude
 
 data class Mahasiswa(
     @get:Exclude
-    val id: Int = 0,
-    val nim: String,
-    val nama: String
+    var id: String = "",
+    var nim: String = "",
+    var nama: String = ""
 )

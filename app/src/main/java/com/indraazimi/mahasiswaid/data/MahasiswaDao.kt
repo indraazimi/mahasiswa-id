@@ -14,5 +14,5 @@ import androidx.lifecycle.LiveData
 interface MahasiswaDao {
     fun insertData(mahasiswa: Mahasiswa)
     fun getData(): LiveData<List<Mahasiswa>>
-    fun deleteData(ids: List<Int>)
+    fun deleteData(ids: List<String>)
 }

@@ -33,7 +33,7 @@ class MainAdapter(
         }
     }
 
-    private val selectionIds = ArrayList<Int>()
+    private val selectionIds = ArrayList<String>()
 
     fun toggleSelection(pos: Int) {
         val id = getItem(pos).id
@@ -44,7 +44,7 @@ class MainAdapter(
         notifyDataSetChanged()
     }
 
-    fun getSelection(): List<Int> {
+    fun getSelection(): List<String> {
         return selectionIds
     }
 
