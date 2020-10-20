@@ -10,7 +10,6 @@
 package com.indraazimi.mahasiswaid.data
 
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import com.google.firebase.database.FirebaseDatabase
 
 class MahasiswaDb private constructor() {
@@ -24,10 +23,10 @@ class MahasiswaDb private constructor() {
             database.push().setValue(mahasiswa)
         }
 
+        // Berkat kelas MahasiswaLiveData, perubahan via Firebase Console
+        // sekarang secara otomatis dapat terlihat di RecyclerView.
         override fun getData(): LiveData<List<Mahasiswa>> {
-            val data = MutableLiveData<List<Mahasiswa>>()
-            data.value = ArrayList()
-            return data
+            return MahasiswaLiveData(database)
         }
 
         override fun deleteData(ids: List<String>) {
