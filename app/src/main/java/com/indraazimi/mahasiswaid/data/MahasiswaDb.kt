@@ -9,29 +9,38 @@
 
 package com.indraazimi.mahasiswaid.data
 
-import android.content.Context
-import androidx.room.Database
-import androidx.room.Room
-import androidx.room.RoomDatabase
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
 
-@Database(entities = [Mahasiswa::class], version = 1, exportSchema = false)
-abstract class MahasiswaDb : RoomDatabase()  {
+class MahasiswaDb private constructor() {
 
-    abstract val dao : MahasiswaDao
+    // Tidak seperti Room yang otomatis membuatkan implementasi Dao,
+    // di Firebase kita harus membuat implementasi Dao sendiri.
+    val dao = object : MahasiswaDao {
+        override fun insertData(mahasiswa: Mahasiswa) {
+
+        }
+
+        override fun getData(): LiveData<List<Mahasiswa>> {
+            val data = MutableLiveData<List<Mahasiswa>>()
+            data.value = ArrayList()
+            return data
+        }
+
+        override fun deleteData(ids: List<Int>) {
+
+        }
+    }
 
     companion object {
         @Volatile
         private var INSTANCE: MahasiswaDb? = null
 
-        fun getInstance(context: Context): MahasiswaDb {
+        fun getInstance(): MahasiswaDb {
             synchronized(this) {
                 var instance = INSTANCE
                 if (instance == null) {
-                    instance = Room.databaseBuilder(
-                        context.applicationContext,
-                        MahasiswaDb::class.java,
-                        "mahasiswa.db"
-                    ).build()
+                    instance = MahasiswaDb()
                     INSTANCE = instance
                 }
                 return instance
