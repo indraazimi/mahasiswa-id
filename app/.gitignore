@@ -1,1 +1,5 @@
 /build
+
+# Project ini akan di-upload ke Github public repository,
+# maka kita abaikan saja file ini dari version control
+google-services.json
