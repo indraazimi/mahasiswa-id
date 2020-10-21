@@ -30,7 +30,7 @@ class MahasiswaDb private constructor() {
         }
 
         override fun deleteData(ids: List<String>) {
-
+            ids.forEach { database.child(it).removeValue() }
         }
     }
 
