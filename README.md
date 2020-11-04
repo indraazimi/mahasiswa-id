@@ -2,14 +2,17 @@
 
 Aplikasi Android yang menampilkan data mahasiswa dalam bentuk daftar. Menggunakan custom dialog untuk input data dan action mode agar dapat menghapus banyak data sekaligus.
 
-Custom Dialog                                        | Tampilan Data                                        | Action Mode
------------------------------------------------------|------------------------------------------------------|---------------------------------------------------
-<img src="screenshots/dialog-tambah.png" width="200">|<img src="screenshots/list-mahasiswa.png" width="200">|<img src="screenshots/action-mode.png" width="200">
+Aplikasi ini menggunakan navigasi master-detail yang diimplementasikan dengan Navigation Component. Di smartphone, tampilan aplikasi seperti berikut:
 
-Aplikasi ini menggunakan Room untuk data persistence. Terdapat pengembangan aplikasi ini di branch lain:
-- Branch testing: versi project dengan pengujian otomatis (instrumented testing) menggunakan Espresso
-- Branch firebase: versi project yang menggunakan Firebase Realtime Database sebagai persistence
-- Branch two-pane: versi project dengan navigasi master-detail dan two-pane layout di tablet
+Tampilan Kelas                                    | Tampilan Data
+--------------------------------------------------|------------------------------------------------------
+<img src="screenshots/list-kelas.png" width="200">|<img src="screenshots/list-mahasiswa.png" width="200">
+
+Jika aplikasi dijalankan di tablet, tampilan akan menyesuaikan dengan two-pane layout seperti ini:
+
+Tampilan Kelas dan Data
+-------------------------------------------------|
+<img src="screenshots/two-pane.png" height="355">|
 
 Punya pertanyaan atau masukan? Silahkan disampaikan melalui issue repository ini.
 
