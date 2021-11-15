@@ -24,7 +24,7 @@ import com.indraazimi.mahasiswaid.data.Mahasiswa
 import com.indraazimi.mahasiswaid.data.MahasiswaDb
 import com.indraazimi.mahasiswaid.databinding.FragmentMainBinding
 
-class MainFragment : Fragment(), MainDialog.DialogListener {
+class MainFragment : Fragment() {
 
     private lateinit var binding: FragmentMainBinding
     private lateinit var myAdapter: MainAdapter
@@ -33,7 +33,7 @@ class MainFragment : Fragment(), MainDialog.DialogListener {
     private val viewModel: MainViewModel by lazy {
         val dataSource = MahasiswaDb.getInstance(requireContext()).dao
         val factory = MainViewModelFactory(dataSource)
-        ViewModelProvider(this, factory).get(MainViewModel::class.java)
+        ViewModelProvider(requireActivity(), factory).get(MainViewModel::class.java)
     }
 
     private val handler = object : MainAdapter.ClickHandler {
@@ -108,10 +108,6 @@ class MainFragment : Fragment(), MainDialog.DialogListener {
             myAdapter.submitList(it)
             binding.emptyView.visibility = if (it.isEmpty()) View.VISIBLE else View.GONE
         })
-    }
-
-    override fun processDialog(mahasiswa: Mahasiswa) {
-        viewModel.insertData(mahasiswa)
     }
 
     private fun deleteData() = AlertDialog.Builder(requireContext()).apply {

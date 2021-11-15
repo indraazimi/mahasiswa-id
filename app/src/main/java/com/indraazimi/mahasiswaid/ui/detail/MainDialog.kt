@@ -16,13 +16,21 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.DialogFragment
+import androidx.lifecycle.ViewModelProvider
 import com.indraazimi.mahasiswaid.R
 import com.indraazimi.mahasiswaid.data.Mahasiswa
+import com.indraazimi.mahasiswaid.data.MahasiswaDb
 import com.indraazimi.mahasiswaid.databinding.DialogMainBinding
 
 class MainDialog : DialogFragment() {
 
     private lateinit var binding: DialogMainBinding
+
+    private val viewModel: MainViewModel by lazy {
+        val dataSource = MahasiswaDb.getInstance(requireContext()).dao
+        val factory = MainViewModelFactory(dataSource)
+        ViewModelProvider(requireActivity(), factory).get(MainViewModel::class.java)
+    }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
         val inflater = LayoutInflater.from(requireContext())
@@ -33,8 +41,7 @@ class MainDialog : DialogFragment() {
             setView(binding.root)
             setPositiveButton(R.string.simpan) { _, _ ->
                 val mahasiswa = getData() ?: return@setPositiveButton
-                val listener = requireActivity() as DialogListener
-                listener.processDialog(mahasiswa)
+                viewModel.insertData(mahasiswa)
             }
             setNegativeButton(R.string.batal) { _, _ -> dismiss() }
         }
@@ -69,9 +76,5 @@ class MainDialog : DialogFragment() {
             setGravity(Gravity.CENTER, 0, 0)
             show()
         }
-    }
-
-    interface DialogListener {
-        fun processDialog(mahasiswa: Mahasiswa)
     }
 }
