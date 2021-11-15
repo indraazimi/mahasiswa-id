@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  ~ Copyright (c) 2021 Indra Azimi. All rights reserved.
+  ~
+  ~ Dibuat untuk kelas Pemrograman untuk Perangkat Bergerak 2.
+  ~ Dilarang melakukan penggandaan dan atau komersialisasi,
+  ~ sebagian atau seluruh bagian, baik cetak maupun elektronik
+  ~ terhadap project ini tanpa izin pemilik hak cipta.
+  -->
+
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    app:startDestination="@id/kelasFragment">
+
+    <fragment
+        android:id="@+id/kelasFragment"
+        android:name="com.indraazimi.mahasiswaid.ui.master.KelasFragment"
+        tools:layout="@layout/fragment_kelas">
+        <action
+            android:id="@+id/action_kelasFragment_to_mainFragment"
+            app:destination="@id/mainFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="com.indraazimi.mahasiswaid.ui.detail.MainFragment"
+        tools:layout="@layout/fragment_main">
+        <action
+            android:id="@+id/action_mainFragment_to_mainDialog"
+            app:destination="@id/mainDialog" />
+    </fragment>
+    <dialog
+        android:id="@+id/mainDialog"
+        android:name="com.indraazimi.mahasiswaid.ui.detail.MainDialog"
+        tools:layout="@layout/dialog_main" />
+</navigation>
