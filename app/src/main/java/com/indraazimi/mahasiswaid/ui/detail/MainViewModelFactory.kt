@@ -7,7 +7,7 @@
  * terhadap project ini tanpa izin pemilik hak cipta.
  */
 
-package com.indraazimi.mahasiswaid
+package com.indraazimi.mahasiswaid.ui.detail
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
