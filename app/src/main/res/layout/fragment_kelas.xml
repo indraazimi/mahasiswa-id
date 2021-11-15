@@ -8,11 +8,9 @@
   ~ terhadap project ini tanpa izin pemilik hak cipta.
   -->
 
-<fragment xmlns:android="http://schemas.android.com/apk/res/android"
+<ListView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/mainFragment"
-    android:name="com.indraazimi.mahasiswaid.ui.master.KelasFragment"
+    android:id="@+id/listView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
-    tools:viewBindingIgnore="true" />
+    tools:listitem="@android:layout/simple_list_item_1" />
