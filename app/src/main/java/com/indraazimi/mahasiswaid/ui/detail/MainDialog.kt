@@ -11,7 +11,6 @@ package com.indraazimi.mahasiswaid.ui.detail
 
 import android.app.Dialog
 import android.os.Bundle
-import android.util.Log
 import android.view.Gravity
 import android.view.LayoutInflater
 import android.widget.Toast
@@ -34,9 +33,6 @@ class MainDialog : DialogFragment() {
     }
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        val args = MainDialogArgs.fromBundle(requireArguments())
-        Log.d("KELAS", args.kelas)
-
         val inflater = LayoutInflater.from(requireContext())
         binding = DialogMainBinding.inflate(inflater, null, false)
 
@@ -69,9 +65,11 @@ class MainDialog : DialogFragment() {
             return null
         }
 
+        val args = MainDialogArgs.fromBundle(requireArguments())
         return Mahasiswa(
             nim = binding.nimEditText.text.toString(),
-            nama = binding.namaEditText.text.toString()
+            nama = binding.namaEditText.text.toString(),
+            kelas = args.kelas
         )
     }
 
