@@ -114,6 +114,11 @@ class MainFragment : Fragment() {
         })
     }
 
+    override fun onDestroy() {
+        actionMode?.finish()
+        super.onDestroy()
+    }
+
     private fun deleteData() = AlertDialog.Builder(requireContext()).apply {
         setMessage(R.string.pesan_hapus)
         setPositiveButton(R.string.hapus) { _, _ ->

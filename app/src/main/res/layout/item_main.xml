@@ -14,7 +14,12 @@
     android:layout_height="wrap_content"
     android:background="@drawable/selector_item"
     android:orientation="vertical"
-    android:padding="16dp">
+    android:paddingStart="@dimen/horizontal_margin"
+    android:paddingLeft="@dimen/horizontal_margin"
+    android:paddingTop="16dp"
+    android:paddingEnd="@dimen/horizontal_margin"
+    android:paddingRight="@dimen/horizontal_margin"
+    android:paddingBottom="16dp">
 
     <TextView
         android:id="@+id/nimTextView"

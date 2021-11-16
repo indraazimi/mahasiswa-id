@@ -14,6 +14,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.ListView
 import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
@@ -35,7 +36,7 @@ class KelasFragment : Fragment() {
         isTablet = resources.getBoolean(R.bool.isTablet)
         val kelas = resources.getStringArray(R.array.kelas)
         binding.listView.adapter = ArrayAdapter(requireContext(),
-            android.R.layout.simple_list_item_1, android.R.id.text1, kelas)
+            android.R.layout.simple_list_item_activated_1, android.R.id.text1, kelas)
         binding.listView.setOnItemClickListener { _, _, position, _ ->
             if (isTablet) {
                 findNavController().navigate(R.id.action_global_mainFragment,
@@ -46,6 +47,11 @@ class KelasFragment : Fragment() {
             findNavController().navigate(
                 KelasFragmentDirections.actionKelasFragmentToMainFragment(kelas[position])
             )
+        }
+
+        if (isTablet) {
+            binding.listView.choiceMode = ListView.CHOICE_MODE_SINGLE
+            binding.listView.setItemChecked(0, true)
         }
     }
 }
