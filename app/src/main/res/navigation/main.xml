@@ -25,13 +25,21 @@
     <fragment
         android:id="@+id/mainFragment"
         android:name="com.indraazimi.mahasiswaid.ui.detail.MainFragment"
+        android:label="{kelas}"
         tools:layout="@layout/fragment_main">
         <action
             android:id="@+id/action_mainFragment_to_mainDialog"
             app:destination="@id/mainDialog" />
+        <argument
+            android:name="kelas"
+            app:argType="string" />
     </fragment>
     <dialog
         android:id="@+id/mainDialog"
         android:name="com.indraazimi.mahasiswaid.ui.detail.MainDialog"
-        tools:layout="@layout/dialog_main" />
+        tools:layout="@layout/dialog_main" >
+        <argument
+            android:name="kelas"
+            app:argType="string" />
+    </dialog>
 </navigation>
