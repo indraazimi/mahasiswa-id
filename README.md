@@ -1,5 +1,9 @@
 # Mahasiswa ID
 
+**Repository diarsipkan** karena materi Mobpro 2 mulai September 2024 sudah menggunakan Jetpack Compose untuk layout, dan menggunakan studi kasus yang berbeda. Untuk melihat project terbaru, silahkan kunjungi repo [indraazimi/mobpro2-compose](https://github.com/indraazimi/mobpro2-compose) 😊
+
+..
+
 Aplikasi Android yang menampilkan data mahasiswa dalam bentuk daftar. Menggunakan custom dialog untuk input data dan action mode agar dapat menghapus banyak data sekaligus.
 
 Custom Dialog                                        | Tampilan Data                                        | Action Mode
